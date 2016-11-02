@@ -26,5 +26,8 @@ var hotColdReducer = function(state,action) {
   return state;
 };
 
+combineReducers ({
+  hotColdReducer
+});
 
 exports.hotColdReducer = hotColdReducer;
