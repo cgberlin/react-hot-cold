@@ -1,11 +1,8 @@
 import React from 'react'
-var ReactDOM = require('react-dom');
-var redux = require('redux');
-var reducers = require('./reducers/index');
+import redux, { createStore } from 'redux'
+import reducers from './reducers'
 
-var createStore = redux.createStore;
-
-var store = createStore(reducers.hotColdReducer);
+var store = createStore(reducers);
 
 
 export default store;

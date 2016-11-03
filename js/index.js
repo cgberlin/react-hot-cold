@@ -1,17 +1,11 @@
+import 'babel-polyfill'
 import React from 'react'
-var ReactDOM = require('react-dom');
-var redux = require('redux');
-
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 import GuessContainer from './components/guess-container'
-
-
-var reducers = require('./reducers/index');
-
-
-var MainPage = function() {
-  return <GuessContainer />
-};
+var ReactDOM = require('react-dom');
+import store from './store'
 
 document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(MainPage, document.getElementById('app'));
+    ReactDOM.render(<GuessContainer />, document.getElementById('app'));
 });

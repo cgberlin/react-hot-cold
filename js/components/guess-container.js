@@ -8,6 +8,6 @@ var GuessContainer = (props) => {
       <GuessForm />
       <GuessAnswer />
     </div>
-  )
+  );
 };
 export default GuessContainer;

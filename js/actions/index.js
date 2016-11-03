@@ -1,7 +1,7 @@
-var GENERATE_NUMER = 'GENERATE_NUMER';
+var GENERATE_NUMBER = 'GENERATE_NUMER';
 var generateNumber = function(number) {
     return {
-      type : GENERATE_NUMER,
+      type : GENERATE_NUMBER,
       number : number
     }
 };
@@ -15,8 +15,10 @@ var guessNumber = function(guess, number) {
     }
 };
 
+export {
+  GENERATE_NUMBER,
+  GUESS_NUMBER,
+  guessNumber,
+  generateNumber
+}
 
-exports.GENERATE_NUMER = GENERATE_NUMER;
-exports.generateNumber = generateNumber;
-exports.GUESS_NUMBER = GUESS_NUMBER;
-exports.guessNumber = guessNumber;

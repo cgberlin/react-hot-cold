@@ -1,9 +1,8 @@
-var actions = require('../actions/index');
-import store from '../store'
-var combineReducers = require('redux').combineReducers;
+import {GENERATE_NUMBER, GUESS_NUMBER, guessNumber, generateNumber} from '../actions/index'
+import {combineReducers} from 'redux'
 
-var initialState = {};
-
+const initialState = {};
+/*
 var hotColdReducer = function(state,action) {
   state = state || initialState;
   if (action.type === actions.generateNumber) {
@@ -25,9 +24,20 @@ var hotColdReducer = function(state,action) {
   }
   return state;
 };
+*/
+
+function rootReducer (state = initialState, action) {
+  switch (action.type) {
+    case GENERATE_NUMBER:
+      return {
+      };
+    default:
+      return state
+  }
+}
 
 combineReducers ({
-  hotColdReducer
+  rootReducer
 });
 
-exports.hotColdReducer = hotColdReducer;
+export default rootReducer;
