@@ -1,11 +1,20 @@
 import React from 'react'
-
-var GuessAnswer = (props) => {
+import {connect} from 'react-redux'
+import store from '../store'
+var GuessAnswer = React.createClass ({
+  render : function(){
+        var isCorrect = store.getState().isCorrect;
+        return (
+            <div>
+              <h1>{isCorrect}</h1>
+            </div>
+        );
+      }
+});
+var mapStateToProps = function(state, props) {
   return (
-      <div>
-        <h1>{props.isCorrect}</h1>
-      </div>
-  )
+    state.isCorrect : 'yes'
+  );
 };
-
-export default GuessAnswer;
+var Container = connect(mapStateToProps)(GuessAnswer);
+export default Container;

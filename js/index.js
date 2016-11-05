@@ -5,7 +5,13 @@ import { Provider } from 'react-redux'
 import GuessContainer from './components/guess-container'
 var ReactDOM = require('react-dom');
 import store from './store'
+import reducers from './reducers/index'
 
 document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(<GuessContainer />, document.getElementById('app'));
+    ReactDOM.render(
+      <Provider store={store}>
+          <GuessContainer />
+      </Provider>,
+    document.getElementById('app')
+  );
 });
