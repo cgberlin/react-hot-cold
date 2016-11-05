@@ -12,9 +12,7 @@ var GuessAnswer = React.createClass ({
       }
 });
 var mapStateToProps = function(state, props) {
-  return (
-    state.isCorrect : 'yes'
-  );
+  return {state};
 };
 var Container = connect(mapStateToProps)(GuessAnswer);
 export default Container;
