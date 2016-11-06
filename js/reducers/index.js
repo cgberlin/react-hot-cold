@@ -1,8 +1,8 @@
-import {GUESS_NUMBER_TRUE, guessNumberTrue, GUESS_NUMBER_FALSE, guessNumberFalse} from '../actions/index'
+import {GUESS_NUMBER_TRUE, guessNumberTrue, GUESS_NUMBER_FALSE, guessNumberFalse, lowestGuessFetch, LOWEST_GUESS_FETCH} from '../actions/index'
 import {combineReducers} from 'redux'
 
 
-const initialState = {isCorrect : 'number generated'};
+const initialState = {isCorrect : 'number generated', fewestGuesses : 'none'};
 
 
 
@@ -20,6 +20,8 @@ const rootReducer = (state = initialState, action) => {
         isCorrect : 'got it!'
       });
       break;
+    case LOWEST_GUESS_FETCH:
+      console.log(lowestGuess);
     default:
       return state
   }

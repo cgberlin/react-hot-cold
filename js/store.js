@@ -1,8 +1,9 @@
 import React from 'react'
-import redux, { createStore } from 'redux'
+import redux, { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducers'
+import ReduxThunk from 'redux-thunk'
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 
 export default store;
