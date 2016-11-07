@@ -1,12 +1,11 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
-var lowestGuess = 0;
-var checkLowest = (userNumber) => {
-  if (lowestGuess > userNumber) {
-    lowestGuess = userNumber;
-  }
-};
+var lowestGuessStored = 'none';
 var runServer = function(callback) {
         app.listen(3000, function() {
             console.log('Listening on localhost:3000');
@@ -21,10 +20,14 @@ runServer(function(err) {
         }
     });
 app.get('/fewest-guesses', (req, res) => {
-  res.json({"lowestGuess" : lowestGuess});
+  res.json({"lowestGuess" : lowestGuessStored});
 });
 app.post('/fewest-guesses', (req, res) => {
-  checkLowest();
+  lowestGuess = req.body;
+  if (lowestGuess < lowestGuessStored || lowestGuessStored == 'none'){
+    lowestGuessStored = lowestGuess;
+  }
+  res.json({"lowestGuess" : lowestGuessStored});
 });
 
 

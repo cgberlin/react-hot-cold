@@ -1,4 +1,7 @@
 import fetch from 'isomorphic-fetch'
+import $ from 'jquery'
+
+var lowestGuess = 0;
 
 var GUESS_NUMBER_FALSE = 'GUESS_NUMBER_FALSE';
 var guessNumberFalse = function(guess, number) {
@@ -26,6 +29,14 @@ var lowestGuessFetch = (lowestGuess) => {
   };
 };
 
+var LOWEST_GUESS_POST = "LOWEST_GUESS_POST";
+var lowestGuessPost = (lowestGuess) => {
+  return {
+      type : LOWEST_GUESS_POST,
+      lowestGuess : lowestGuess
+  };
+};
+
 var getLowestGuess = () => {
   return function(dispatch, lowestGuess) {
       let url = '/lowest-guesses';
@@ -41,7 +52,21 @@ var getLowestGuess = () => {
       };
 };
 
+var postLowestGuess = (lowestGuessPass) => {
+  lowestGuess = lowestGuessPass;
+  return function(dispatch, getState) {
+      return $.ajax({
+            method: "POST",
+            url: "/fewest-guesses",
+            data: {lowestGuess: lowestGuess}
+          }).then(function(response) {
+                return dispatch(lowestGuessFetch(response.lowestGuess.lowestGuess));
+            });
+      };
+};
+
 export {
+  postLowestGuess,
   getLowestGuess,
   LOWEST_GUESS_FETCH,
   lowestGuessFetch,
