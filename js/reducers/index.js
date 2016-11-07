@@ -21,7 +21,10 @@ const rootReducer = (state = initialState, action) => {
       });
       break;
     case LOWEST_GUESS_FETCH:
-      console.log(lowestGuess);
+      return Object.assign({}, state, {
+        name : action.lowestGuess,
+        fewestGuesses : action.lowestGuess
+      });
     default:
       return state
   }

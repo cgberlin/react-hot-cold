@@ -4,7 +4,6 @@ import store from '../store'
 var randomNumber = (Math.floor(Math.random()*(100-1+1)+1));
 var GuessForm = React.createClass({
   checkAnswer : function() {
-    console.log(randomNumber);
     let userAnswer = this.refs.guessInput.value;
     if (userAnswer == randomNumber) {
       store.dispatch({type: 'GUESS_NUMBER_TRUE'});

@@ -20,4 +20,8 @@ var FewestGuesses = React.createClass({
     }
 });
 
-export default FewestGuesses;
+var mapStateToProps = function(state, props) {
+  return {state};
+};
+var Container = connect(mapStateToProps)(FewestGuesses);
+export default Container;

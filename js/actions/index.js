@@ -20,7 +20,6 @@ var guessNumberTrue = function(guess, number) {
 
 var LOWEST_GUESS_FETCH = "LOWEST_GUESS_FETCH";
 var lowestGuessFetch = (lowestGuess) => {
-  console.log(lowestGuess);
   return {
       type : LOWEST_GUESS_FETCH,
       lowestGuess : lowestGuess
@@ -28,15 +27,15 @@ var lowestGuessFetch = (lowestGuess) => {
 };
 
 var getLowestGuess = () => {
-  return function(dispatch) {
+  return function(dispatch, lowestGuess) {
       let url = '/lowest-guesses';
       return fetch('/fewest-guesses').then(function(response) {
                 return response.json();
             })
             .then(function(data) {
-                var lowestGuessIs = data.lowestGuess;
+                var lowestGuess = data.lowestGuess;
                 return dispatch(
-                  lowestGuessFetch(lowestGuessIs)
+                  lowestGuessFetch(lowestGuess)
                 );
             });
       };
